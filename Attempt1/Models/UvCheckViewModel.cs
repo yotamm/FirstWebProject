@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Attempt1.Models
+namespace KummaWebProject.Models
 {
     public class UvCheckViewModel
     {

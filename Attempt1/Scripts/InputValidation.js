@@ -1,6 +1,6 @@
-﻿//regular expressions for input validation from the register form
+﻿//regular expressions for input validation
 function check(x) {
-    var text = $('#'+x).val();
+    var text = $("#"+x).val();
     var pattern;
     switch(x) {
         case "Email":
@@ -23,10 +23,9 @@ function check(x) {
             }
             break;
         case "ConfirmPassword":
-            if (text != $('#Password').val()) {
+            if (text !== $("#Password").val()) {
                 return "Passwords do not match";
             }
-            return null;
             break;
         case "PhoneNumber":
             pattern = /^[0-9]{3}-[0-9]{7}$/;
@@ -35,6 +34,7 @@ function check(x) {
             }
             break;
         default:
+            console.error(x +" has no case in InputValidation");
             break;
     }
     return null;
@@ -43,11 +43,13 @@ function check(x) {
 //display input errors based on regular expression tests
 function validationDisplay() {
     $("#errorList").empty();
-    document.getElementById("ValidationSummary").style = "display: block";
+    $("#ValidationSummary").show();
     var errors = [check("Email"), check("Password"), check("UserName"), check("FirstName"), check("ConfirmPassword"), check("PhoneNumber")];
     for (var i in errors) {
-        if (errors[i] != null) {
-            $("#errorList").append("<li>" + errors[i] + "</li>");
+        if (errors.hasOwnProperty(i)) {
+            if (errors[i] != null) {
+                $("#errorList").append("<li>" + errors[i] + "</li>");
+            }
         }
     }
 }

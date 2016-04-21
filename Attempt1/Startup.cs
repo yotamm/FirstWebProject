@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Attempt1.Startup))]
-namespace Attempt1
+[assembly: OwinStartupAttribute(typeof(KummaWebProject.Startup))]
+namespace KummaWebProject
 {
     public partial class Startup
     {

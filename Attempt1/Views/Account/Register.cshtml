@@ -1,4 +1,4 @@
-﻿@model Attempt1.Models.RegisterViewModel
+﻿@model KummaWebProject.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
@@ -17,13 +17,11 @@
     I left the model validation intact for server-side validation. *@
     
     <div id="ValidationSummary" style="display: @(ViewData.ModelState.Values.Any(x => x.Errors.Count >= 1)?"block":"none")">
-        @*@Html.ValidationSummary("", new {@class = "alert alert-danger", role = "alert"})*@ <!-- server-side validation -->
         <div class="alert alert-danger"  role="alert">
             <ul id="errorList">
-                <!-- show errors from the model -->
-                @foreach (var error in ViewData.ModelState.Values.Where(E => E.Errors.Count > 0)
-                    .SelectMany(E => E.Errors)
-                    .Select(E => E.ErrorMessage))
+                @foreach (var error in ViewData.ModelState.Values.Where(e => e.Errors.Count > 0)
+                    .SelectMany(e => e.Errors)
+                    .Select(e => e.ErrorMessage))
                 {
                     <li>@error</li>
                 }
@@ -48,7 +46,7 @@
             @Html.TextBoxFor(m => m.FirstName, new {@class = "form-control", @id = "FirstName"})
         </div>
     </div>
-    <div class="form-group sheker">
+    <div class="form-group lastNameHidder">
         @Html.LabelFor(m => m.LastName, new {@class = "col-md-2 control-label", @id = "lastNameLabel"})
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.LastName, new {@class = "form-control", @id = "LastName"})
