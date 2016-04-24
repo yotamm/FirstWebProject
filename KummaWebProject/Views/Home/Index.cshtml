@@ -1,4 +1,5 @@
-﻿@model KummaWebProject.Models.UvCheckViewModel
+﻿
+@model KummaWebProject.Models.UvCheckViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -18,7 +19,7 @@
     @Html.TextBoxFor(m => m.City, new { @class = "form-control", @id = "City" })
     <input type="submit" class="btn btn-default"/>
 }
-@if (ViewData.Model?.Data != null)
+@if (ViewData.Model != null && ViewData.Model.Data != null)
 {
     <h4><span class="label label-primary">@ViewData.Model.Data.ToString()</span></h4>
 }
